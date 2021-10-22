@@ -1,0 +1,7 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Detalle del incidente</mat-label>
+        <textarea class="estilo" matInput [(ngModel)]="archivo.detailDescription" readonly></textarea>
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="aceptar()">Cerrar</button>

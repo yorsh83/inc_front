@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+}
+
+.example-card-1 {
+    width: 300px;
+    text-align: center;
+    align-items: center;
+    background-color: lightblue;
+}
+
+.example-card-2 {
+    width: 300px;
+    text-align: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.example-card-3 {
+    width: 600px;
+    text-align: center;
+    align-items: center;
+    background-color: beige;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.es {
+    float: right;
+}

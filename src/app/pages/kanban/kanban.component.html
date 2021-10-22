@@ -1,0 +1,150 @@
+<mat-toolbar>Kanban</mat-toolbar>
+
+<div class="container">
+
+    <table mat-table id="table" [dataSource]="dsAnalisis" matSort>
+        <ng-container matColumnDef="analisis">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Analisis / Diagnostico </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{row.idIncident}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{row.priority}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{row.detail}}</p>
+                        <button mat-raised-button color="accent" (click)="openDetail(row)">Editar</button>
+                        <button mat-raised-button color="primary" (click)="avanzar(row)">Fluir</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="colAnalisis"></tr>
+        <tr mat-row *matRowDef="let row; columns: colAnalisis;"></tr>
+    </table>
+
+    <table mat-table id="table" [dataSource]="dsConstruccion" matSort>
+        <ng-container matColumnDef="construccion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Construccion </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{row.idIncident}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{row.priority}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{row.detail}}</p>
+                        <button mat-raised-button color="accent" (click)="openDetail(row)">Editar</button>
+                        <button mat-raised-button color="primary" (click)="avanzar(row)">Fluir</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colConst"></tr>
+        <tr mat-row *matRowDef="let row; columns: colConst;"></tr>
+    </table>
+
+    <table mat-table id="table" [dataSource]="dsPruebas" matSort>
+        <ng-container matColumnDef="pruebas">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pruebas </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{row.idIncident}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{row.priority}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{row.detail}}</p>
+                        <button mat-raised-button color="accent" (click)="openDetail(row)">Editar</button>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Seleccione Flujo</mat-label>
+                            <mat-select [(ngModel)]="selFlujo" name="tipoK">
+                                <mat-option *ngFor="let tipoK of elemMostrar" [value]="tipoK.value">
+                                    {{tipoK.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" (click)="avanzar(row)">Fluir</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colPruebas"></tr>
+        <tr mat-row *matRowDef="let row; columns: colPruebas;"></tr>
+    </table>
+
+    <table mat-table id="table" [dataSource]="dsLiberacion" matSort>
+        <ng-container matColumnDef="liberacion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Liberacion </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{row.idIncident}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{row.priority}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{row.detail}}</p>
+                        <button mat-raised-button color="accent" (click)="openDetail(row)">Editar</button>
+                        <button mat-raised-button color="primary" (click)="avanzar(row)">Fluir</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colLib"></tr>
+        <tr mat-row *matRowDef="let row; columns: colLib;"></tr>
+    </table>
+
+    <table mat-table id="table" [dataSource]="dsRetro" matSort>
+        <ng-container matColumnDef="retrospectiva">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Retrospectiva - Soporte / Cierre </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{row.idIncident}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{row.priority}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{row.detail}}</p>
+                        <button mat-raised-button color="accent" (click)="openDetail(row)">Editar</button>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Seleccione Flujo</mat-label>
+                            <mat-select [(ngModel)]="selFlujo" name="tipoK">
+                                <mat-option *ngFor="let tipoK of lstTipos" [value]="tipoK.value">
+                                    {{tipoK.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" (click)="avanzar(row)">Procesar</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colRetro"></tr>
+        <tr mat-row *matRowDef="let row; columns: colRetro;"></tr>
+    </table>
+
+</div>

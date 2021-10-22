@@ -1,0 +1,74 @@
+<mat-toolbar>Reporte Semanal</mat-toolbar>
+
+<div class="container">
+    <mat-card class="example-card-1">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+            <h1>
+                TOTAL INCIDENTES
+            </h1>
+            <h3>
+                {{totalIncidentes}}
+            </h3>
+            <h1>
+                INCIDENTES TOMADOS
+            </h1>
+            <h3>
+                {{totalTomados}}
+            </h3>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="example-card-2">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+            <button mat-raised-button color="primary">ANALISIS</button>
+            <h3>
+                {{totalAnalisis}}
+            </h3>
+            <button mat-raised-button color="primary">CONSTRUCCION</button>
+            <h3>
+                {{totalConstruccion}}
+            </h3>
+            <button mat-raised-button color="primary">PRUEBAS</button>
+            <h3>
+                {{totalPruebas}}
+            </h3>
+            <button mat-raised-button color="primary">LIBERACION</button>
+            <h3>
+                {{totalLiberacion}}
+            </h3>
+            <button mat-raised-button color="primary">CIERRE</button>
+            <h3>
+                {{totalRetro}}
+            </h3>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="example-card-3">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+            <div [hidden]="!chart">
+                <canvas id="canvas">{{chart}}</canvas>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div class="es">
+    <!--<button mat-button color=primary (click)="generarReporte()">PDF</button>-->
+    <button mat-fab color=primary #tooltip="matTooltip" matTooltip="Descargar en PDF" [matTooltipPosition]="position.value" matTooltipHideDelay="300" (click)="descargarReporte()">
+        <mat-icon>get_app</mat-icon>
+    </button>
+
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
+
+</div>

@@ -1,0 +1,8 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Escribir detalle</mat-label>
+        <textarea matInput class="estilo" [(ngModel)]="kanban.detail"></textarea>
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="actualizarTexto()">Guardar</button>
+<button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
